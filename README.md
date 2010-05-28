@@ -6,7 +6,13 @@ NewBase60.pm is a perl implementation [Tantek Celik](http://tantek.com)'s [new b
 
 ## Usage
 
-    use NewBase60;
+    use NewBase60 qw(date_to_num num_to_date
+        date_to_ord ord_to_date
+        num_to_ord ord_to_num
+        num_to_sxg sxg_to_num
+        sxg_to_ord ord_to_sxg
+        date_to_sxg sxg_to_date
+    );
 
     my $date = '1971-06-29';
     my ( $y, $m, $d ) = split /-/, $date;
