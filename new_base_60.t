@@ -10,10 +10,10 @@ unshift @INC, ".";
 use NewBase60;
 
 my @dates = (
-    { date => '1970-01-01', days => '0',     sxg => '0',   ord => '1970-001' },
-    { date => '1970-01-02', days => '1',     sxg => '1',   ord => '1970-002' },
-    { date => '1971-06-29', days => '544',   sxg => '94',  ord => '1971-180' },
-    { date => '2010-05-26', days => '14755', sxg => '45v', ord => '2010-146' },
+    { date => '1970-01-01', days => '0',     sxg => '0',   sxgf => '000', ord => '1970-001' },
+    { date => '1970-01-02', days => '1',     sxg => '1',   sxgf => '001', ord => '1970-002' },
+    { date => '1971-06-29', days => '544',   sxg => '94',  sxgf => '094', ord => '1971-180' },
+    { date => '2010-05-26', days => '14755', sxg => '45v', sxgf => '45v', ord => '2010-146' },
 );
 
 for my $dd (@dates) {
@@ -52,6 +52,9 @@ for my $dd (@dates) {
 
     $sxg_value = num_to_sxg( $dd->{days} );
     is( $sxg_value, $dd->{sxg}, 'num_to_sxg returns correct value (' . $dd->{sxg} . ') for ' . $ds );
+
+    my $sxgf_value = num_to_sxgf( $dd->{days}, 3 );
+    is( $sxgf_value, $dd->{sxgf}, 'num_to_sxgf returns correct value (' . $dd->{sxgf} . ') for ' . $ds );
 
     my $dec_value = sxg_to_num( $dd->{sxg} );
     is( $dec_value, $dd->{days}, 'sxg_to_num returns correct value (' . $dd->{days} . ') for ' . $ds );

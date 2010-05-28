@@ -12,7 +12,7 @@ BEGIN {
     @EXPORT = qw(date_to_num num_to_date
         date_to_ord ord_to_date
         num_to_ord ord_to_num
-        num_to_sxg sxg_to_num
+        num_to_sxg sxg_to_num num_to_sxgf
         sxg_to_ord ord_to_sxg
         date_to_sxg sxg_to_date
     );
@@ -112,6 +112,12 @@ sub num_to_sxg {
         $n = ( $n - $d ) / 60;
     }
     return $p . $s;
+}
+
+sub num_to_sxgf {
+    my ( $n, $f ) = @_;
+    if ( !$f ) { $f = 1; }
+    return sprintf( "%0${f}s", num_to_sxg($n) );
 }
 
 =pod

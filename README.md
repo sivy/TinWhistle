@@ -28,7 +28,7 @@ NewBase60.pm is a perl implementation [Tantek Celik](http://tantek.com)'s [new b
     # days *since* the epoch (1970-01-01)
     my $epoch_days = date_to_num ($date); # 544
 
-    # that value encoded as sexigesimal
+    # that value encoded as sexagesimal
     my $sxg_days = num_to_sxg ($epoch_days); # 94
     
     # ordinal date per ISO8601 - YYYY-DDD
