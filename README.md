@@ -4,6 +4,8 @@ NewBase60.pm is a perl implementation [Tantek Celik](http://tantek.com)'s [new b
 
 >"I needed a way to compress numbers for a URL shortener I am building so I looked at existing work, decided I could do better with a better design methodology, and ended up deriving a base 60 numbering system from ASCII characters."
 
+(How this technique is used in Tantek's URL shortener is described in [this blog post](http://www.monkinetic.com/2010/05/tantek-celik-diso-20-brass-tacks.html).)
+
 ## Usage
 
     use NewBase60 qw(date_to_num num_to_date
