@@ -7,7 +7,7 @@ use POSIX qw(ceil floor);
 
 unshift @INC, ".";
 
-use NewBase60;
+use TinWhistle;
 
 # structure
 
@@ -115,40 +115,6 @@ my @data = (
     },
 );
 
-sub parse_short_url {
-    my $short_url = shift;
-    if ( $short_url =~ /(\w)([\w\d]{3})([\w\d]+)/ ) {
-        return { post_type => $1, sss => $2, post_num => $3 };
-    }
-}
-
-sub short_to_long_as_ord {
-    my $s   = shift;
-    my $d   = parse_short_url($s);
-    my $ord = sxg_to_ord( $d->{sss} );
-    my ( $y, $days ) = split /-/, $ord;
-    return "$y/$days/" . $d->{post_type} . $d->{post_num};
-}
-
-sub short_to_long_as_ymd {
-    my $s  = shift;
-    my $d  = parse_short_url($s);
-    my $dt = sxg_to_date( $d->{sss} );
-    return join "/",
-        (
-        $dt->year,
-        sprintf( "%02d", $dt->month ),
-        sprintf( "%02d", $dt->day ),
-        ( $d->{post_type} . $d->{post_num} )
-        );
-}
-
-sub make_short {
-    my ( $dt, $post_type, $post_num ) = @_;
-    my $s = date_to_sxgf($dt);
-    return $post_type . $s . $post_num;
-}
-
 for my $dd (@data) {
     my $short_url = $dd->{short};
     my $d         = parse_short_url($short_url);
@@ -170,12 +136,19 @@ for my $dd (@data) {
         month => $dd->{month},
         day   => $dd->{day},
     );
-    my $new_short_url = make_short( $dt, $d->{post_type}, $d->{post_num} );
+    my $new_short_url = make_short_from_data( $dt, $d->{post_type}, $d->{post_num} );
     is( $new_short_url, $short_url,
-              'make_short returns correct value ('
+              'make_short_from_data returns correct value ('
             . $short_url
             . ') for '
             . $dt . ', '
             . $d->{post_type} . ', '
             . $d->{post_num} );
+    $new_short_url = make_short_from_url( $dd->{long_as_ord} );
+    is( $new_short_url, $short_url,
+        'make_short_from_url returns correct value (' . $short_url . ') for ' . $dd->{long_as_ord} );
+    $new_short_url = make_short_from_url( $dd->{long_as_ymd} );
+    is( $new_short_url, $short_url,
+        'make_short_from_url returns correct value (' . $short_url . ') for ' . $dd->{long_as_ymd} );
+
 }
