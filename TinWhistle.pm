@@ -15,7 +15,7 @@ BEGIN {
     );
 }
 
-use NewBase60;
+use TinWhistle::NewBase60;
 
 # structure
 
@@ -31,7 +31,7 @@ use NewBase60;
 # - n
 
 =pod
-parse_short_url - takes a TinWhistle short URL and returns a data structure containing it's components:
+parse_short_url - takes a TinWhistle short URL and returns a data structure containing its components:
 
 * post_type: a single letter signifying what kind of post this is referring to
 * sss: a sexagesimal number representing the post date as days since the epoch
