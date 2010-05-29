@@ -85,11 +85,24 @@ sub short_to_long_as_ymd {
         );
 }
 
+=pod
+make_sort_from_data - takes a DateTime, post_type, and post_num and generates a shortlink from it.
+
+=cut
+
 sub make_short_from_data {
     my ( $dt, $post_type, $post_num ) = @_;
     my $s = date_to_sxgf($dt);
     return $post_type . $s . $post_num;
 }
+
+=pod
+make_short_from_url - takes a url following one of two styles and generates a shortlink from it
+
+* 2010/146/t2 - ordinal year and days, Tantek-style
+* 2010/05/26/t2 - year/month/day
+
+=cut
 
 sub make_short_from_url {
     my $u = shift;
