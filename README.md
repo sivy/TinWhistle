@@ -6,7 +6,7 @@ NewBase60.pm is a perl implementation [Tantek Celik](http://tantek.com)'s [new b
 
 (How this technique is used in Tantek's URL shortener is described in [this blog post](http://www.monkinetic.com/2010/05/tantek-celik-diso-20-brass-tacks.html).)
 
-## Usage
+### Usage
 
     use NewBase60 qw(date_to_num num_to_date
         date_to_ord ord_to_date
@@ -34,4 +34,9 @@ NewBase60.pm is a perl implementation [Tantek Celik](http://tantek.com)'s [new b
     # ordinal date per ISO8601 - YYYY-DDD
     my $ord_date = date_to_ord ($date); # 2010-146
     
-    
+## NewBase60::TinWhistle
+
+TinWhistle is a simple URL shortener that uses the NewBase60 code as an essential part of the shortening algorithm. [This blog post](http://www.monkinetic.com/2010/05/tantek-celik-diso-20-brass-tacks.html) explains the algorithm in detail.
+
+### Usage
+
