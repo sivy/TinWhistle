@@ -14,7 +14,7 @@ BEGIN {
         num_to_ord ord_to_num
         num_to_sxg sxg_to_num num_to_sxgf sxg_to_numf
         sxg_to_ord ord_to_sxg
-        date_to_sxg sxg_to_date
+        date_to_sxg date_to_sxgf sxg_to_date
     );
 }
 
@@ -203,6 +203,12 @@ sub date_to_sxg {
     my $dt = shift;
     my $n  = date_to_num($dt);
     return num_to_sxg($n);
+}
+
+sub date_to_sxgf {
+    my $dt = shift;
+    my $n  = date_to_num($dt);
+    return num_to_sxgf( $n, 3 );
 }
 
 sub sxg_to_date {
