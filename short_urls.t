@@ -117,7 +117,7 @@ my @data = (
 
 sub parse_short_url {
     my $short_url = shift;
-    if ( $short_url =~ /(t|b|p)([\w\d]{3})([\w\d]+)/ ) {
+    if ( $short_url =~ /(\w)([\w\d]{3})([\w\d]+)/ ) {
         return { post_type => $1, sss => $2, post_num => $3 };
     }
 }
